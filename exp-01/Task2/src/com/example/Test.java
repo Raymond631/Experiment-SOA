@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) throws ServiceException, IOException {
+        System.out.println("请输入日期，如2023-11-11");
         Scanner in = new Scanner(System.in);
         String date = in.nextLine();
 
