@@ -27,10 +27,14 @@ public class CommonResponse {
     private String url;
 
     public static CommonResponse success(String msg, Object data, String url) {
-        return new CommonResponse(HttpStatus.SUCCESS, msg, data,url);
+        return new CommonResponse(HttpStatus.SUCCESS, msg, data, url);
     }
 
-    public static CommonResponse error(String msg,String url) {
+    public static CommonResponse success(String url) {
+        return new CommonResponse(HttpStatus.SUCCESS, "操作成功", null, url);
+    }
+
+    public static CommonResponse error(String msg, String url) {
         return new CommonResponse(HttpStatus.ERROR, msg, null, url);
     }
 }

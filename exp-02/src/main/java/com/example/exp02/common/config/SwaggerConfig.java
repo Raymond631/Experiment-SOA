@@ -1,4 +1,4 @@
-package com.example.exp02.config;
+package com.example.exp02.common.config;
 
 import java.util.ArrayList;
 import java.util.List;
