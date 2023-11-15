@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.exp02.mapper.PersonMapper">
-    <insert id="insertPerson">
-        insert into person (id, name, role)
-        values (#{id}, #{name}, #{role});
+
+    <insert id="insertPerson" parameterType="com.example.exp02.pojo.Person">
+        INSERT INTO person (id, name, role, password, role_id) VALUES (#{id}, #{name}, #{role}, #{password}, #{roleId})
     </insert>
+
+    <select id="getPersonById" resultType="com.example.exp02.pojo.Person" parameterType="String">
+        SELECT * FROM person WHERE id = #{id}
+    </select>
+
+    <update id="updatePerson" parameterType="com.example.exp02.pojo.Person">
+        UPDATE person SET name = #{name}, password = #{password}, role = #{role} WHERE id = #{id}
+    </update>
+
+    <delete id="deletePersonById" parameterType="String">
+        DELETE FROM person WHERE id = #{id}
+    </delete>
+
+    <select id="getPersonByName" resultType="com.example.exp02.pojo.Person" parameterType="String">
+        SELECT * FROM person WHERE name = #{name}
+    </select>
+
+    <update id="changePassword">
+        UPDATE person SET password = #{password} WHERE id = #{id}
+    </update>
+
+    <update id="changeRole">
+        UPDATE person SET role = #{role}, role_id= #{role_id} WHERE id = #{id}
+    </update>
+
 </mapper>
