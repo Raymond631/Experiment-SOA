@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.exp02.mapper.BorrowMapper">
+
+    <!-- addBorrowInfo -->
+    <insert id="addBorrowInfo" parameterType="com.example.exp02.pojo.Borrow">
+        INSERT INTO borrow (person_id, thing_id, thing_quantity, borrow_time, latest_return_time, is_return, actual_return_time)
+        VALUES (#{personId}, #{thingId}, #{thingQuantity}, #{borrowTime}, #{latestReturnTime}, #{isReturn}, #{actualReturnTime})
+    </insert>
+
+    <!-- deleteBorrowInfo -->
+    <delete id="deleteBorrowInfo" parameterType="java.lang.String">
+        DELETE FROM borrow WHERE id = #{id}
+    </delete>
+
+    <!-- getBorrowInfoById -->
+    <select id="getBorrowInfoById" parameterType="java.lang.String" resultType="com.example.exp02.pojo.Borrow">
+        SELECT * FROM borrow WHERE id = #{id}
+    </select>
+
+    <!-- getBorrowInfoByThingId -->
+    <select id="getBorrowInfoByThingId" parameterType="java.lang.String" resultType="com.example.exp02.pojo.Borrow">
+        SELECT * FROM borrow WHERE thing_id = #{thingId}
+    </select>
+
+    <!-- getBorrowInfoByPersonId -->
+    <select id="getBorrowInfoByPersonId" parameterType="java.lang.String" resultType="com.example.exp02.pojo.Borrow">
+        SELECT * FROM borrow WHERE person_id = #{personId}
+    </select>
+
+    <!-- updateBorrowInfo -->
+    <update id="updateBorrowInfo" parameterType="com.example.exp02.pojo.Borrow">
+        UPDATE borrow
+        SET person_id = #{personId},
+            thing_id = #{thingId},
+            thing_quantity = #{thingQuantity},
+            borrow_time = #{borrowTime},
+            latest_return_time = #{latestReturnTime},
+            is_return = #{isReturn},
+            actual_return_time = #{actualReturnTime}
+        WHERE id = #{id}
+    </update>
+
+    <!-- updateBorrowInfoByReturn -->
+    <update id="updateBorrowInfoByReturn" parameterType="java.util.Map">
+        UPDATE borrow
+        SET is_return = #{isReturn},
+            actual_return_time = #{actualReturnTime}
+        WHERE id = #{id}
+    </update>
+
+    <!-- getAllBorrowInfo -->
+    <select id="getAllBorrowInfo" resultType="com.example.exp02.pojo.Borrow">
+        SELECT * FROM borrow
+    </select>
+</mapper>
+
