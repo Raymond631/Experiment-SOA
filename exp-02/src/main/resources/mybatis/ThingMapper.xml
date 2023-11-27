@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.exp02.mapper.ThingMapper">
+    <insert id="insertThing">
+        insert into thing (name, quantity, unit)
+        values (#{name}, #{quantity}, #{unit});
+    </insert>
+
+    <delete id="deleteThingById">
+        delete
+        from thing
+        where id = #{id};
+    </delete>
+    
+    <update id="updateThingById">
+        update thing
+        set name     = #{name},
+            quantity = #{quantity},
+            unit     = #{unit}
+        where id = #{id};
+    </update>
+
+    <select id="findThing" resultType="com.example.exp02.pojo.Thing">
+        select *
+        from thing;
+    </select>
+</mapper>
