@@ -26,21 +26,21 @@ public class PersonController {
     public CommonResponse getPersonById(@RequestParam String id) {
 
         Person persson = personService.getPersonById(id);
-        return CommonResponse.success("查询成功",persson,"http://localhost:8081/swagger-ui/index.html");
+        return CommonResponse.success();
     }
 
     @ApiOperation("更新人员信息")
     @PutMapping("/person")
     public CommonResponse updatePerson(@RequestBody Person person) {
         personService.updatePerson(person);
-        return CommonResponse.success("人员更新成功",person,"http://localhost:8081/swagger-ui/index.html");
+        return CommonResponse.success();
     }
 
     @ApiOperation("根据id删除人员")
     @DeleteMapping("/person")
     public CommonResponse deletePersonById(@RequestParam String id) {
         personService.deletePersonById(id);
-        return CommonResponse.success("人员删除成功",id,"http://localhost:8081/swagger-ui/index.html");
+        return CommonResponse.success();
     }
 
     @ApiOperation("根据name查询人员")
@@ -53,7 +53,7 @@ public class PersonController {
     @PutMapping("/person/password")
     public CommonResponse changePassword(@RequestParam String id, @RequestParam String password) {
         personService.changePassword(id, password);
-        return CommonResponse.success("人员更新成功",id,"http://localhost:8081/swagger-ui/index.html");
+        return CommonResponse.success();
     }
 
     @ApiOperation("根据id修改角色")
@@ -75,6 +75,6 @@ public class PersonController {
                 break;
         }
         personService.changeRole(id, role, role_id);
-        return CommonResponse.success("角色修改成功",id,"http://localhost:8081/swagger-ui/index.html");
+        return CommonResponse.success();
     }
 }
