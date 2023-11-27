@@ -22,41 +22,43 @@ public class PersonController {
     }
 
     @ApiOperation("根据id查询人员")
-    @GetMapping("/getPerson")
-    public Person getPersonById(@RequestParam String id) {
-        return personService.getPersonById(id);
+    @GetMapping("/Person")
+    public CommonResponse getPersonById(@RequestParam String id) {
+
+        Person persson = personService.getPersonById(id);
+        return CommonResponse.success("查询成功",persson,"http://localhost:8081/swagger-ui/index.html");
     }
 
-    @ApiOperation("根据id修改人员")
-    @PutMapping("/person/update")
-    public String updatePerson(@RequestBody Person person) {
+    @ApiOperation("更新人员信息")
+    @PutMapping("/person")
+    public CommonResponse updatePerson(@RequestBody Person person) {
         personService.updatePerson(person);
-        return "Person updated successfully";
+        return CommonResponse.success("人员更新成功",person,"http://localhost:8081/swagger-ui/index.html");
     }
 
     @ApiOperation("根据id删除人员")
-    @DeleteMapping("/person/delete")
-    public String deletePersonById(@RequestParam String id) {
+    @DeleteMapping("/person")
+    public CommonResponse deletePersonById(@RequestParam String id) {
         personService.deletePersonById(id);
-        return "Person deleted successfully";
+        return CommonResponse.success("人员删除成功",id,"http://localhost:8081/swagger-ui/index.html");
     }
 
     @ApiOperation("根据name查询人员")
-    @GetMapping("/getPersonByName")
+    @GetMapping("/person/name")
     public Person getPersonByName(@RequestParam String name) {
         return personService.getPersonByName(name);
     }
 
     @ApiOperation("根据id修改密码")
     @PutMapping("/person/password")
-    public String changePassword(@RequestParam String id, @RequestParam String password) {
+    public CommonResponse changePassword(@RequestParam String id, @RequestParam String password) {
         personService.changePassword(id, password);
-        return "Password changed successfully";
+        return CommonResponse.success("人员更新成功",id,"http://localhost:8081/swagger-ui/index.html");
     }
 
     @ApiOperation("根据id修改角色")
     @PutMapping("/person/role")
-    public String changeRole(@RequestParam String id, @RequestParam String role) {
+    public CommonResponse changeRole(@RequestParam String id, @RequestParam String role) {
         int role_id;
         switch (role) {
             case "root":
@@ -73,6 +75,6 @@ public class PersonController {
                 break;
         }
         personService.changeRole(id, role, role_id);
-        return "Role changed successfully";
+        return CommonResponse.success("角色修改成功",id,"http://localhost:8081/swagger-ui/index.html");
     }
 }
