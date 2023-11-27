@@ -22,37 +22,37 @@ public class BorrowController {
     @PostMapping("/borrows")
     public CommonResponse addBorrowInfo(@RequestBody Borrow borrow) {
         borrowService.addBorrowInfo(borrow);
-        return CommonResponse.success("添加借用信息成功", borrow, "/borrows/" + borrow.getId());
+        return CommonResponse.success(borrow);
     }
     @ApiOperation("删除借用信息")
     @DeleteMapping("/borrows/{id}")
     public CommonResponse deleteBorrowInfo(@PathVariable String id) {
         borrowService.deleteBorrowInfo(id);
-        return CommonResponse.success("删除成功", null, "/borrows");
+        return CommonResponse.success();
     }
     @ApiOperation("获取所有借用信息")
     @GetMapping("/borrows")
     public CommonResponse getAllBorrowInfo() {
         List<Borrow> borrowList = borrowService.getAllBorrowInfo();
-        return CommonResponse.success("获取所有借用信息成功", borrowList, null);
+        return CommonResponse.success( borrowList);
     }
     @ApiOperation("根据id获取借用信息")
     @GetMapping("/borrows/{id}")
     public CommonResponse getBorrowInfoById(@PathVariable String id) {
         Borrow borrow = borrowService.getBorrowInfoById(id);
-        return CommonResponse.success("获取借用信息成功", borrow, null);
+        return CommonResponse.success(borrow);
     }
     @ApiOperation("根据物品id获取借用信息")
     @GetMapping("/borrows/thing/{thingId}")
     public CommonResponse getBorrowInfoByThingId(@PathVariable("thingId") String thingId) {
         Borrow borrow = borrowService.getBorrowInfoByThingId(thingId);
-        return CommonResponse.success("获取借用信息成功", borrow, null);
+        return CommonResponse.success(borrow);
     }
     @ApiOperation("根据人员id获取借用信息")
     @GetMapping("/borrows/person/{personId}")
     public CommonResponse getBorrowInfoByPersonId(@PathVariable("personId") String personId) {
         Borrow borrow = borrowService.getBorrowInfoByPersonId(personId);
-        return CommonResponse.success("获取借用信息成功", borrow, null);
+        return CommonResponse.success(borrow);
     }
     @ApiOperation("更新借用信息")
     @PutMapping("/borrows/{id}")
@@ -60,7 +60,7 @@ public class BorrowController {
             @RequestBody Borrow borrow
     ) {
         borrowService.updateBorrowInfo(borrow);
-        return CommonResponse.success("更新借用信息成功", borrow, null);
+        return CommonResponse.success();
     }
     @ApiOperation("更新借用返还时间")
     @PatchMapping("/borrows/{id}")
@@ -70,7 +70,7 @@ public class BorrowController {
             @RequestParam LocalDateTime actual_return_time
     ) {
         borrowService.updateBorrowInfoByReturn(id, is_return, actual_return_time);
-        return CommonResponse.success("更新借用信息成功", null, null);
+        return CommonResponse.success();
     }
 
 
