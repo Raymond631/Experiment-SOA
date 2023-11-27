@@ -27,7 +27,7 @@ public interface BorrowMapper {
     void updateBorrowInfoByReturn(
             String id,
             Boolean isReturn,
-            LocalDateTime actualReturnTime
+            String actualReturnTime
     );
 
     List<Borrow> getAllBorrowInfo();

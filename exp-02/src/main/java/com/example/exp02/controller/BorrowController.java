@@ -55,7 +55,7 @@ public class BorrowController {
         return CommonResponse.success(borrow);
     }
     @ApiOperation("更新借用信息")
-    @PutMapping("/borrows/{id}")
+    @PutMapping("/borrows")
     public CommonResponse updateBorrowInfo(
             @RequestBody Borrow borrow
     ) {
@@ -67,7 +67,7 @@ public class BorrowController {
     public CommonResponse updateBorrowInfoByReturn(
             @PathVariable String id,
             @RequestParam Boolean is_return,
-            @RequestParam LocalDateTime actual_return_time
+            @RequestParam String actual_return_time
     ) {
         borrowService.updateBorrowInfoByReturn(id, is_return, actual_return_time);
         return CommonResponse.success();

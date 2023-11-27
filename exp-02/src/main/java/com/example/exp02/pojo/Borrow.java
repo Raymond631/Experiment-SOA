@@ -21,12 +21,12 @@ public class Borrow {
 
     private int thingQuantity;
 
-    private LocalDateTime borrowTime;
+    private String borrowTime;
 
-    private LocalDateTime latestReturnTime;
+    private String latestReturnTime;
 
     private Boolean isReturn;
 
-    private LocalDateTime actualReturnTime;
+    private String actualReturnTime;
 
 }

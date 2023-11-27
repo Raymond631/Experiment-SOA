@@ -21,7 +21,7 @@ public interface BorrowService {
 
     void updateBorrowInfo(Borrow borrow);
 
-    void updateBorrowInfoByReturn(String id, Boolean is_return, LocalDateTime actual_return_time);
+    void updateBorrowInfoByReturn(String id, Boolean is_return, String actual_return_time);
 
     List<Borrow> getAllBorrowInfo();
 }

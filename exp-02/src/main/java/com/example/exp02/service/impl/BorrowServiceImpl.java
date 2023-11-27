@@ -49,7 +49,7 @@ public class BorrowServiceImpl implements BorrowService {
     }
 
     @Override
-    public void updateBorrowInfoByReturn(String id, Boolean is_return, LocalDateTime actual_return_time) {
+    public void updateBorrowInfoByReturn(String id, Boolean is_return, String actual_return_time) {
         BorrowMapper.updateBorrowInfoByReturn(id,is_return,actual_return_time);
     }
 
