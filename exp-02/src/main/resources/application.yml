@@ -19,7 +19,7 @@ logging:
     path: logs
   level:
     com.example: debug
-z
+
 mybatis:
   mapper-locations: classpath:mybatis/*.xml
   type-aliases-package: com/example/pojo

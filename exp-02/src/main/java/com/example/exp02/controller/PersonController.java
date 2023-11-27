@@ -7,9 +7,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-@RestController
+import org.springframework.web.util.pattern.PathPattern;
 @Api(tags = "人员管理")
+@RestController
 public class PersonController {
     @Autowired
     private PersonService personService;
@@ -22,11 +22,10 @@ public class PersonController {
     }
 
     @ApiOperation("根据id查询人员")
-    @GetMapping("/Person")
+    @GetMapping("/person")
     public CommonResponse getPersonById(@RequestParam String id) {
-
-        Person persson = personService.getPersonById(id);
-        return CommonResponse.success();
+        Person person = personService.getPersonById(id);
+        return CommonResponse.success(person);
     }
 
     @ApiOperation("更新人员信息")
@@ -45,8 +44,9 @@ public class PersonController {
 
     @ApiOperation("根据name查询人员")
     @GetMapping("/person/name")
-    public Person getPersonByName(@RequestParam String name) {
-        return personService.getPersonByName(name);
+    public CommonResponse getPersonByName(@RequestParam String name) {
+        Person person = personService.getPersonByName(name);
+        return CommonResponse.success(person);
     }
 
     @ApiOperation("根据id修改密码")
