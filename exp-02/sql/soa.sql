@@ -11,7 +11,7 @@
  Target Server Version : 50736 (5.7.36)
  File Encoding         : 65001
 
- Date: 14/11/2023 12:56:53
+ Date: 27/11/2023 10:40:52
 */
 
 SET NAMES utf8mb4;
@@ -47,13 +47,19 @@ CREATE TABLE `person` (
   `id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '学工号',
   `name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '姓名',
   `role` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '身份：本科生、研究生、教师',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `password` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of person
 -- ----------------------------
 BEGIN;
+INSERT INTO `person` (`id`, `name`, `role`, `password`, `role_id`) VALUES ('0', 'root', 'root', 'root', 0);
+INSERT INTO `person` (`id`, `name`, `role`, `password`, `role_id`) VALUES ('1', 'admin', 'admin', 'admin', 1);
+INSERT INTO `person` (`id`, `name`, `role`, `password`, `role_id`) VALUES ('2', 'guest', 'guest', 'guest', 2);
+INSERT INTO `person` (`id`, `name`, `role`, `password`, `role_id`) VALUES ('3', '1', 'guest', '1', 2);
 COMMIT;
 
 -- ----------------------------

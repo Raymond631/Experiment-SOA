@@ -7,11 +7,9 @@ import java.util.List;
 public interface ThingService {
     void addThing(Thing thing);
 
-    List<Thing> findThing();
-
-    int findId(Thing thing);
+    void deleteThingById(int id);
 
     void updateThingById(Thing thing);
 
-    void deleteThingById(Thing thing);
+    List<Thing> findThing();
 }

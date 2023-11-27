@@ -6,22 +6,22 @@
         values (#{name}, #{quantity}, #{unit});
     </insert>
 
-    <select id="findThing" resultType="com.example.exp02.pojo.Thing">
-        select * from thing
-    </select>
-
-    <select id="findId" resultType="int">
-        SELECT id FROM thing WHERE name = #{name}
-    </select>
-
+    <delete id="deleteThingById">
+        delete
+        from thing
+        where id = #{id};
+    </delete>
+    
     <update id="updateThingById">
-        UPDATE thing
-        SET name = #{name}, quantity = #{quantity}, unit = #{unit}
-        WHERE id = #{id}
+        update thing
+        set name     = #{name},
+            quantity = #{quantity},
+            unit     = #{unit}
+        where id = #{id};
     </update>
 
-    <delete id="deleteThingById">
-        DELETE FROM thing
-        WHERE id = #{id}
-    </delete>
+    <select id="findThing" resultType="com.example.exp02.pojo.Thing">
+        select *
+        from thing;
+    </select>
 </mapper>

@@ -1,14 +1,10 @@
 package com.example.exp02.pojo;
 
-
-
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Thing {
@@ -16,5 +12,4 @@ public class Thing {
     private String name;
     private int quantity;
     private String unit;
-
 }
