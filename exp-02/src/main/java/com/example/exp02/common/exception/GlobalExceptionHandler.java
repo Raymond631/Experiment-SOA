@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ServiceException.class)
     public CommonResponse handleServiceException(ServiceException e, HttpServletRequest request) {
         log.error(e.getMessage(), e);
-        return CommonResponse.error(e.getMessage(),null);
+        return CommonResponse.error(e.getMessage());
     }
 
     /**
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     public CommonResponse handleBindException(BindException e) {
         String message = e.getAllErrors().get(0).getDefaultMessage();
         log.error(e.getMessage(), e);
-        return CommonResponse.error(message,null);
+        return CommonResponse.error(message);
     }
 
     /**
@@ -38,6 +38,6 @@ public class GlobalExceptionHandler {
     public CommonResponse handleException(Exception e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生系统异常.", requestURI, e);
-        return CommonResponse.error("服务器繁忙，请稍后再试~",null);
+        return CommonResponse.error("服务器繁忙，请稍后再试~");
     }
 }

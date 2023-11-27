@@ -20,27 +20,27 @@ public class ThingController {
     @PostMapping("/thing")
     public CommonResponse add(@RequestBody Thing thing) {
         thingService.addThing(thing);
-        return CommonResponse.success("");
+        return CommonResponse.success();
     }
 
     @ApiOperation("删除物资信息")
     @DeleteMapping("/thing")
     public CommonResponse delete(@RequestParam int id) {
         thingService.deleteThingById(id);
-        return CommonResponse.success("");
+        return CommonResponse.success();
     }
 
     @ApiOperation("更新物资信息")
     @PutMapping("/thing")
-    public CommonResponse update(Thing thing) {
+    public CommonResponse update(@RequestBody Thing thing) {
         thingService.updateThingById(thing);
-        return CommonResponse.success("");
+        return CommonResponse.success();
     }
 
     @ApiOperation("获取物资信息")
     @GetMapping("/things")
     public CommonResponse list() {
         List<Thing> list = thingService.findThing();
-        return CommonResponse.success("", list, "");
+        return CommonResponse.success(list);
     }
 }
