@@ -7,9 +7,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:12345/soa
-    username: root
-    password: 12345
+    url: jdbc:mysql://127.0.0.1:3306/soa
+    username: Raymond
+    password: 123456
 
 swagger:
   enabled: true

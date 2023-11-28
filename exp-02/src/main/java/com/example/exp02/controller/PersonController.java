@@ -7,7 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.pattern.PathPattern;
+
 @Api(tags = "人员管理")
 @RestController
 public class PersonController {
@@ -18,7 +18,7 @@ public class PersonController {
     @PostMapping("/person")
     public CommonResponse addPerson(@RequestBody Person person) {
         personService.addPerson(person);
-        return CommonResponse.success("http://localhost:8081/swagger-ui/index.html");
+        return CommonResponse.success();
     }
 
     @ApiOperation("根据id查询人员")
